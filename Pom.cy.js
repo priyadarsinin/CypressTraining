@@ -1,7 +1,4 @@
-// cypress/integration/login/login_spec.js
 
-
-// If LoginPage.js is in the support folder
 import LoginPage from '../support/LoginPage';
 
 
@@ -20,3 +17,26 @@ describe('Login Test', () => {
     cy.title().should('eq', 'OrangeHRM');  // Ensure the page title matches the expected one after login
   });
 });
+
+// in support folder inside LoginPage.js
+// cypress/support/pages/LoginPage.js
+
+class LoginPage {
+    visit() {
+      cy.visit('https://opensource-demo.orangehrmlive.com/');
+    }
+  
+    fillUsername(username) {
+      cy.get('input[name="username"]').type(username);  // Replace with your username field's selector
+    }
+  
+    fillPassword(password) {
+      cy.get('input[name="password"]').type(password);  // Replace with your password field's selector
+    }
+  
+    submit() {
+      cy.get('button[type="submit"]').click();  // Replace with your login button's selector
+    }
+  }
+  
+  export default LoginPage;
